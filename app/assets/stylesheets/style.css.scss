@@ -1,0 +1,15 @@
+$main-color: green;
+$item-color: red;
+
+h1 {
+  color: $main-color;
+}
+
+p.price {
+  color: $item-color;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}

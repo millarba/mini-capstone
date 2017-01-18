@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+product = Product.find(4)
+product.image = ""
+product.save
+
+
+
 
 product = Product.new(name: "Parmeggiano Reggiano", price: 15, color: "pale-ish yellow", description: "VERY fancy cheese")
 product.save

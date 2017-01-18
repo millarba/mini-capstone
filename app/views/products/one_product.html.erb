@@ -1,33 +1,10 @@
 <h1>Cheese!</h1>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <% @products.each do |product| %>
-<h2>Item: <%= product.name %></h2>
-<h3>Price: $<%= product.price %></h3>
-<h3>Color: <%= product.color %></h3>
-<h3>Description: <%= product.description %></h3>
+<h2>Item: <%= product.name %></h2><img src=<%= product.image %>>
+<p class="price">Price: $<%= product.price %></p>
+<p>Color: <%= product.color %></p>
+<p>Description: <%= product.description %></p>
+<p>------------------------------------------------</p>
 <% end %>
 
