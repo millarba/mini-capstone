@@ -6,4 +6,8 @@
 <p>Description: <%= @product.description %></p>
 <p>------------------------------------------------</p>
 
-<a href="/products">Home</a>
+<a class="btn btn-info", href="/products">Home</a>
+<a class="btn btn-info", href="/products/<%= @product.id %>/edit">Edit</a>
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <input class="btn btn-danger", type="submit", value="Delete Product">
+<% end %>
