@@ -1,9 +1,17 @@
 <h1>Cheese!</h1>
 
-<% @products.each do |product| %>
-<h2>Item: <a href="/products/<%= product.id %>"><%= product.name %></a></h2><img src=<%= product.image %>>
-<p class="price">Price: $<%= product.price %></p>
-<p>Color: <%= product.color %></p>
-<p>Description: <%= product.description %></p>
-<p>------------------------------------------------</p>
+<% @products.each_slice(3) do |slice_product| %>
+  <div class="row">
+    <% slice_product.each do |product| %>
+      <div class="col-md-4">
+        <div class="well">
+          <h2>Item: <a href="/products/<%= product.id %>"><%= product.name %></a></h2><img src=<%= product.image %>>
+          <p class="price">Price: $<%= product.price %></p>
+          <p>Color: <%= product.color %></p>
+          <p>Description: <%= product.description %></p>
+          <p>------------------------------------------------</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
