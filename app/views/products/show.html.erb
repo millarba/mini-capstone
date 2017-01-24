@@ -1,7 +1,10 @@
 <h1>Product</h1>
 
 <h2>Item: <%= @product.name %></h2><img src=<%= @product.image %>>
-<p class="price">Price: $<%= @product.price %></p>
+<h5><%= @product.sale_message %></h5>
+<p>Price: $<%= @product.price %></p>
+<p>Tax: $<%= @product.tax %></p>
+<p class ="price">Total: $<%= @product.total %></p>
 <p>Color: <%= @product.color %></p>
 <p>Description: <%= @product.description %></p>
 <p>------------------------------------------------</p>
