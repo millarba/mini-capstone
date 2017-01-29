@@ -11,6 +11,7 @@
 <p class ="<%= "sale-item" if @product.discounted? %>">Total: <%= number_to_currency(@product.total) %></p>
 <p>Color: <%= @product.color %></p>
 <p>Description: <%= @product.description %></p>
+<p>Supplier Name: <%= @product.supplier.name %></p>
 <p>------------------------------------------------</p>
 
 <a class="btn btn-info", href="/products">Home</a>

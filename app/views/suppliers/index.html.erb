@@ -1,0 +1,17 @@
+<h1>Suppliers</h1>
+
+<% @suppliers.each_slice(3) do |slice_supplier| %>
+  <div class="row">
+    <% slice_supplier.each do |supplier| %>
+      <div class="col-md-4">
+        <div class="well">
+          <h2>Company: <%= supplier.name %></h2>
+          <p>Email: <%= supplier.email %></p>
+          <p>Phone: <%= supplier.phone %></p>
+          <!-- <p>Products: <% supplier.products %></p> -->
+          <p>------------------------------------------------</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   #   end
   # end
 
+  belongs_to :supplier
+  has_many :images
   def discounted?
     price < 5
   end

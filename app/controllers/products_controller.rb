@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     sort_attribute = params[:sort]
     sort_order = params[:sort_order]
     discount_amount = params[:discount]
-
+    
   if discount_amount
     @products = @products.where("price < ?", discount_amount)
   end
