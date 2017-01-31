@@ -1,6 +1,9 @@
 <h1>Product</h1>
 
-<h2>Item: <%= @product.name %></h2><img src=<%= @product.image %>>
+<h2>Item: <%= @product.name %></h2>
+<% @product.images.each do |image| %>
+  <img src=<%= image.url %>>
+<% end %>
 <% if @product.discounted?  %>
 <h5>Discount item!</h5>
 <% else %>
@@ -14,8 +17,9 @@
 <p>Supplier Name: <%= @product.supplier.name %></p>
 <p>------------------------------------------------</p>
 
-<a class="btn btn-info", href="/products">Home</a>
-<a class="btn btn-info", href="/products/<%= @product.id %>/edit">Edit</a>
+<a class="btn btn-info", href="/products">Home</a><br>
+<a class="btn btn-info", href="/products/<%= @product.id %>/edit">Edit</a><br>
+<a class="btn btn-info", href="/products/<%= @product.id %>/images/new">Add Image</a>
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
   <input class="btn btn-danger", type="submit", value="Delete Product">
 <% end %>

@@ -21,4 +21,13 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
+
+  def default_image
+    if images.count > 0
+      images.first.url
+    else
+      ""
+    end
+  end
+
 end

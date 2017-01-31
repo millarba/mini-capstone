@@ -28,8 +28,9 @@ class ProductsController < ApplicationController
                             name: params[:name],
                             price: params[:price],
                             color: params[:color],
-                            description: params[:description]
-      )
+                            description: params[:description],
+                            supplier_id: params[:supplier][:supplier_id]
+                            )
     @product.save
     flash[:success] = "Product Created Successfully."
     redirect_to "/products/#{@product.id}"
@@ -81,6 +82,6 @@ class ProductsController < ApplicationController
   def search
     search_term = params[:search_term]
     @products = Product.where("name iLIKE ? OR description iLIKE ? OR color iLIKE ?", "%#{search_term}%", "%#{search_term}%", "%#{search_term}%")
-    render :index
+    redirect_to '/index'
   end
 end
