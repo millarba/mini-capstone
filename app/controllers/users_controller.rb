@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+uclass UsersController < ApplicationController
 
   def new
 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
                     password_confirmation: params[:password_confirmation]
                     )
     if user.save
-      session[:id] = user.id
+      session[:user_id] = user.id
       flash[:success] = "Account Created"
       redirect_to '/'
     else
