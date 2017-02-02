@@ -23,3 +23,11 @@
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
   <input class="btn btn-danger", type="submit", value="Delete Product">
 <% end %>
+
+<%=  form_tag "/orders", method:  :post do %>
+  <%= label_tag :quantity %>
+  <%= text_field_tag :quantity %>
+  <%= label_tag :product_id %>
+  <%= text_field_tag :product_id, @product.id %>
+  <%= submit_tag "Order Now!" %>
+<% end %>
