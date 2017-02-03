@@ -8,10 +8,10 @@ class OrdersController < ApplicationController
                           product_id: params[:product_id]
                           )
 
-    calculate_subtotal
-    calculate_tax
-    calculate_total
-    order.save
+    @order.calculate_subtotal
+    @order.calculate_tax
+    @order.calculate_total
+    @order.save
 
     redirect_to "/orders/#{@order.id}"
   end
