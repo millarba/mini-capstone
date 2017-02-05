@@ -1,7 +1,7 @@
 class CartedProductsController < ApplicationController
 
   def create
-    @carted_product = CartedProduct.create(user_id: params[:user_id],
+    @carted_product = CartedProduct.create(user_id: current_user,
                                           product_id: params[:product_id],
                                           quantity: params[:quantity],
                                           status: "carted"
@@ -15,6 +15,6 @@ class CartedProductsController < ApplicationController
   def destroy
     @carted_product = CartedProduct.find(params[:id])
     @carted_product.status = "removed"
-    redirect_to 
+    redirect_to '/cart'
   end
 end
