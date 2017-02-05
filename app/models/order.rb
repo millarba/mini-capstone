@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :product
+  has_many :carted_products
 
   # You could do this to remove all the logic from the controller and put it in here
   # That would be tricky because you mess with the initialize method in the super class

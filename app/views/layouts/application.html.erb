@@ -55,6 +55,11 @@
               <ul class="dropdown-menu">
               <% if current_user %>
                 <li><a href="/logout">Logout</a></li>
+                <% if carted_items %>
+                  <li><a href="/cart">Check out</a></li>
+                <% else %>
+                  <li><a href="/products">Check out</a></li>
+                <% end %>
               <% else %>
                 <li><a href="/signup">Create Account</a></li>
                 <li><a href="/login">Login</a></li>

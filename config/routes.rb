@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/products/:product_id/images' => 'images#create'
 
   get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  post '/users' => 'users#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -33,5 +33,9 @@ Rails.application.routes.draw do
   post '/orders' => 'orders#create'
 
   get '/orders/:id' => 'orders#show'
+
+  post '/cart' => 'carted_products#create'
+  get '/cart' => 'carted_products#show'
+  get '/remove' => 'carted_products#destroy'
 
 end

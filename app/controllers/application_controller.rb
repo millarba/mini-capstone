@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to '/login' unless current_user
   end
+
+  def carted_items
+    @carted_items ||= CartedProduct.where(status: "carted")
+  end
+  helper_method :carted_items
+  
 end
