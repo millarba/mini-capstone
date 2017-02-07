@@ -31,11 +31,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   post '/orders' => 'orders#create'
-
   get '/orders/:id' => 'orders#show'
 
   post '/cart' => 'carted_products#create'
-  get '/cart' => 'carted_products#show'
-  get '/remove' => 'carted_products#destroy'
+  get '/cart' => 'carted_products#index'
+  post '/remove/:id' => 'carted_products#destroy'
 
 end
