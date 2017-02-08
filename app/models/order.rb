@@ -10,21 +10,24 @@ class Order < ApplicationRecord
   #   calculate_all_totals
   # end
 
-  def calculate_subtotal 
-    self.subtotal = product.price * quantity
+  # def calculate_subtotal 
+  #   self.subtotal = product.price * quantity
+  # end
+
+  # def calculate_tax
+  #   self.tax = subtotal * 0.09
+  # end
+
+  def calculate_totals
+    subtotal = 0
+
+    carted_products.each do |carted_product|
+      subtotal += carted_product.subtotal
+    end
+
+    tax = subtotal * 0.09
+    total = subtotal + tax
+    update(subtotal: subtotal, tax: tax, total: total)
   end
 
-  def calculate_tax
-    self.tax = subtotal * 0.09
-  end
-
-  def calculate_total
-    self.total = tax + subtotal
-  end
-
-  def calculate_all_totals
-    calculate_subtotal
-    calculate_tax
-    calculate_total
-  end
 end
