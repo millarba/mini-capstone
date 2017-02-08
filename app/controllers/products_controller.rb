@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     @products = Product.all
@@ -7,40 +8,42 @@ class ProductsController < ApplicationController
     discount_amount = params[:discount]
     category_type = params[:category]
     
-  if discount_amount
-    @products = @products.where("price < ?", discount_amount)
-  end
+    if discount_amount
+      @products = @products.where("price < ?", discount_amount)
+    end
 
-  if category_type
-    category = Category.find_by(name: category_type)
-    @products = category.products
-  end
+    if category_type
+      category = Category.find_by(name: category_type)
+      @products = category.products
+    end
 
-  if sort_attribute && sort_order
-    @products = @products.order(sort_attribute => sort_order)
-  elsif sort_attribute
-    @products = @products.order(sort_attribute)
-  end
-
+    if sort_attribute && sort_order
+      @products = @products.order(sort_attribute => sort_order)
+    elsif sort_attribute
+      @products = @products.order(sort_attribute)
+    end
 
   end
 
 
   def new
-
+    @product = Product.new
   end
 
   def create
-    @product = Product.new(
-                            name: params[:name],
-                            price: params[:price],
-                            color: params[:color],
-                            description: params[:description],
-                            supplier_id: params[:supplier][:supplier_id]
-                            )
-    @product.save
-    flash[:success] = "Product Created Successfully."
-    redirect_to "/products/#{@product.id}"
+      @product = Product.new(
+                              name: params[:name],
+                              price: params[:price],
+                              color: params[:color],
+                              description: params[:description],
+                              supplier_id: params[:supplier][:supplier_id]
+                              )
+      if @product.save
+        flash[:success] = "Product Created Successfully."
+        redirect_to "/products/#{@product.id}"
+      else
+        render :new
+      end
   end
 
   def show
@@ -58,7 +61,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+      @product = Product.find(params[:id])
   end
 
   def update
@@ -91,4 +94,5 @@ class ProductsController < ApplicationController
     @products = Product.where("name iLIKE ? OR description iLIKE ? OR color iLIKE ?", "%#{search_term}%", "%#{search_term}%", "%#{search_term}%")
     redirect_to '/index'
   end
+
 end

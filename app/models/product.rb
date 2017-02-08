@@ -1,13 +1,4 @@
 class Product < ApplicationRecord
-
-  # def sale_message
-  #   if price < 3
-  #     "Discount Item!" 
-  #   else 
-  #     "Everyday value!"
-  #   end
-  # end
-
   belongs_to :supplier
   has_many :images
   has_many :product_categories
@@ -15,6 +6,11 @@ class Product < ApplicationRecord
   has_many :carted_products
   has_many :orders, through: :carted_products
   
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+  validates :description, length: { in: 3..300 }
+
   def discounted?
     price < 5
   end

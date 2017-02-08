@@ -1,15 +1,19 @@
+<% @product.errors.full_messages.each do |error| %>
+  <h2><%= error %></h2>
+<% end %>
+
 <h1>Add a new product</h1>
 
 <%= form_tag "/products", method: :post do %>
 
   <div>
-    Name: <input type="text", name="name">
+    Name: <input type="text", name="name", value="<%= @product.name %>">
   </div>  
   <div>
-    Price: <input type="text", name="price">
+    Price: <input type="text", name="price", value="<%= @product.price %>">
   </div>
   <div>
-    Color: <input type="text", name="color">
+    Color: <input type="text", name="color", value="<%= @product.color %>">
   </div>
 
   <div>
@@ -18,7 +22,7 @@
   </div>
 
   <div>
-    Description: <input type="text", name="description">
+    Description: <input type="text", name="description", value="<%= @product.description %>">
   </div>
   <input type="submit", value="Add Product">
 <% end %>

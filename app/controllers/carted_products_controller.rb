@@ -1,4 +1,5 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     # @carted_products = CartedProduct.where("user_id = ? AND status = ?", "#{current_user.id}" ,"carted")
@@ -11,14 +12,18 @@ class CartedProductsController < ApplicationController
   end
 
   def create
-    @carted_product = CartedProduct.new(user_id: current_user.id,
-                                          product_id: params[:product_id],
-                                          quantity: params[:quantity],
-                                          status: "carted"
-                                          )
-    @carted_product.save
-    flash[:success] = "Products added to cart"
-    redirect_to "/cart"
+    if current_user
+      @carted_product = CartedProduct.new(user_id: current_user.id,
+                                            product_id: params[:product_id],
+                                            quantity: params[:quantity],
+                                            status: "carted"
+                                            )
+      @carted_product.save
+      flash[:success] = "Products added to cart"
+      redirect_to "/cart"
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy

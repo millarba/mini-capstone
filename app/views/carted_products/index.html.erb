@@ -3,9 +3,7 @@
 <% @carted_products.each do |carted_product| %>
   <h2><%= carted_product.product.name %> x <%= carted_product.quantity %></h2>
   <h3><%= carted_product.product.price %></h3>
-  <%= form_tag "/remove/#{carted_product.id}", method:  :post do %>
-  <%= submit_tag "Remove Item" %>
-  <% end %>
+  <%= link_to "Remove Item", "/remove/#{carted_product.id}", method:  :delete, class: "btn btn-default" %>
   <br>
 <% end %>
 

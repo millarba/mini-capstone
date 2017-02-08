@@ -23,7 +23,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/products">Home</a></li>
+          <% if current_user && current_user.admin %>
             <li><a href="/products/new">New</a></li>
+          <% end %>
             <li><a href="/products?discount=5">Discount Items</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -56,9 +58,9 @@
               <% if current_user %>
                 <li><a href="/logout">Logout</a></li>
                 <% if carted_items %>
-                  <li><a href="/cart">Cart</a></li>
+                  <li><a href="/cart">Cart (<%= @cart_count %>)</a></li>
                 <% else %>
-                  <li><a href="/products">Cart</a></li>
+                  <li><a href="/products">Cart (<%= @cart_count %>)</a></li>
                 <% end %>
               <% else %>
                 <li><a href="/signup">Create Account</a></li>
